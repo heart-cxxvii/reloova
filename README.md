@@ -29,7 +29,7 @@ python3 -m http.server 8000
     ├── logo.svg            # ロゴ（差し替え可能）
     ├── favicon.svg         # favicon（差し替え可能）
     └── images/
-        ├── founder-photo-placeholder.svg # 代表者写真の差し替え枠
+        ├── founder-photo.png # 代表者プロフィール写真
         ├── og-image.svg    # OGP画像の編集元
         └── og-image.png    # OGP画像（差し替え可能）
 ```
@@ -43,7 +43,6 @@ Cloudflare Pagesへの将来的なデプロイを想定した静的構成です�
 - `index.html`内の連絡先メールアドレス（`contact@example.com`）
 - `assets/logo.svg`
 - `assets/favicon.svg`
-- `assets/images/founder-photo-placeholder.svg`（代表者写真へ差し替え）
 - `assets/images/og-image.png`
 - 公開URL確定後のcanonical URLとOGP画像の絶対URL
 

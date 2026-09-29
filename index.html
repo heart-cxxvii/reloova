@@ -97,9 +97,6 @@
             </div>
           </div>
         </div>
-        <div class="hero-foot container" aria-hidden="true">
-          <span>01</span><i></i><span>SCROLL TO EXPLORE</span>
-        </div>
       </section>
 
       <section id="about" class="section problem-section" aria-labelledby="problem-title">
@@ -107,37 +104,62 @@
           <div class="section-heading heading-split">
             <div>
               <p class="section-number">01 — PROBLEM</p>
-              <h2 id="problem-title">スポーツ現場と研究開発。<br />両側に、まだ解かれていない課題があります。</h2>
+              <h2 id="problem-title">異なる2つの課題を、<br />RELOOVAがつなぐ。</h2>
             </div>
             <p>
-              部活動の継続を支えるお金と情報。そして研究開発に必要な運動データ。RELOOVAは、離れている2つの課題をひとつの循環でつなぐことを目指します。
+              スポーツ現場には活動を続けるための課題があり、研究開発の現場には運動データを集める難しさがあります。RELOOVAは、それぞれ別の方向を向いている課題をつなぐ仕組みを構想しています。
             </p>
           </div>
 
-          <div class="problem-grid">
-            <article class="problem-card">
-              <div class="line-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48"><path d="M9 15h30v22H9zM15 15V9h18v6M17 24h14M17 30h8" /></svg>
+          <div class="problem-map" aria-label="スポーツ現場と研究開発現場、それぞれの課題">
+            <article class="problem-side problem-field">
+              <div class="problem-side-head">
+                <div class="line-icon" aria-hidden="true">
+                  <svg viewBox="0 0 48 48"><path d="M9 15h30v22H9zM15 15V9h18v6M17 24h14M17 30h8" /></svg>
+                </div>
+                <div>
+                  <p class="card-index">SPORTS FIELD</p>
+                  <h3>学校・地域クラブ側の課題</h3>
+                </div>
               </div>
-              <p class="card-index">ISSUE 01</p>
-              <h3>家庭に積み重なる費用負担</h3>
-              <p>部費、用品費、ユニフォーム、遠征費、大会参加費。挑戦を続けるほど家庭の負担が増えやすい構造があります。</p>
+              <ul class="problem-points">
+                <li>
+                  <span>01</span>
+                  <div><strong>活動費の負担</strong><p>部費、用品費、ユニフォーム、遠征費、大会参加費などが家庭や現場に積み重なる。</p></div>
+                </li>
+                <li>
+                  <span>02</span>
+                  <div><strong>情報の分断</strong><p>教員、外部指導者、地域クラブの間で、活動内容や選手の状態を継続的に共有しにくい。</p></div>
+                </li>
+              </ul>
             </article>
-            <article class="problem-card">
-              <div class="line-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48"><circle cx="15" cy="15" r="5"/><circle cx="33" cy="15" r="5"/><path d="M7 35c0-7 3-12 8-12s8 5 8 12M25 35c0-7 3-12 8-12s8 5 8 12M21 19l6-4M21 27l6 4"/></svg>
+
+            <div class="problem-bridge" aria-label="RELOOVAが2つの課題をつなぐ">
+              <span>CONNECT</span>
+              <strong>RELOOVA</strong>
+              <p>日々の利用から生まれる記録を、研究開発に活用できる価値へ</p>
+            </div>
+
+            <article class="problem-side problem-research">
+              <div class="problem-side-head">
+                <div class="line-icon" aria-hidden="true">
+                  <svg viewBox="0 0 48 48"><path d="M8 37h32M12 33V20h7v13M21 33V11h7v22M30 33V17h7v16M8 12l9-5 7 4 15-7"/></svg>
+                </div>
+                <div>
+                  <p class="card-index">RESEARCH &amp; R&amp;D</p>
+                  <h3>研究機関・企業側の課題</h3>
+                </div>
               </div>
-              <p class="card-index">ISSUE 02</p>
-              <h3>地域をまたぐ情報の分断</h3>
-              <p>教員、外部指導者、地域クラブの間で、活動内容や選手の状態を継続的に共有・管理する仕組みが十分ではありません。</p>
-            </article>
-            <article class="problem-card">
-              <div class="line-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48"><path d="M8 37h32M12 33V20h7v13M21 33V11h7v22M30 33V17h7v16M8 12l9-5 7 4 15-7"/></svg>
-              </div>
-              <p class="card-index">ISSUE 03</p>
-              <h3>継続的な運動データの不足</h3>
-              <p>スポーツ科学やバイオメカニクスの研究では、継続的かつ大規模な運動データの収集・整備に負担がかかります。</p>
+              <ul class="problem-points">
+                <li>
+                  <span>01</span>
+                  <div><strong>継続的なデータの不足</strong><p>研究・製品開発に必要な運動データを、継続的かつ一定規模で確保することが難しい。</p></div>
+                </li>
+                <li>
+                  <span>02</span>
+                  <div><strong>収集・整備コスト</strong><p>被験者募集、測定、日程調整、データ管理・加工に人手・時間・設備が必要になる。</p></div>
+                </li>
+              </ul>
             </article>
           </div>
         </div>
@@ -147,15 +169,15 @@
         <div class="container">
           <div class="section-heading heading-inline">
             <div>
-              <p class="section-number">02 — PRODUCT CONCEPT</p>
-              <h2 id="product-title">RELOOVAで実現を目指すこと</h2>
+              <p class="section-number">02 — SaaS FOR SPORTS FIELD</p>
+              <h2 id="product-title">スポーツ現場を支えるSaaS構想</h2>
             </div>
             <p class="concept-label">PLANNED / IN DEVELOPMENT</p>
           </div>
 
           <div class="product-intro">
             <p>
-              学校の部活動や地域スポーツクラブで、記録・指導・運営をひとつにつなぐSaaSを構想しています。
+              RELOOVAの学校・地域クラブ向けSaaSでは、日々の活動記録、選手の状態、動作、チーム運営をひとつにつなぐことを目指しています。
             </p>
           </div>
 
@@ -197,45 +219,69 @@
             <p>利用料の中心を学校や家庭に置くのではなく、運動データを必要とする研究機関・企業などから収益を得るモデルを想定しています。</p>
           </div>
 
-          <div class="model-cycle" aria-label="RELOOVAの事業モデル">
-            <div class="cycle-step step-1">
-              <span class="step-number">01</span>
-              <div class="step-icon" aria-hidden="true">🏃</div>
+          <div class="business-ecosystem" aria-label="学校・地域クラブ、RELOOVA、研究機関・企業をつなぐ事業モデル">
+            <article class="ecosystem-party party-sports">
+              <p class="ecosystem-label">SPORTS FIELD</p>
+              <div class="ecosystem-icon" aria-hidden="true">🏃</div>
               <h3>学校・地域クラブ</h3>
-              <p>日々の活動で利用</p>
+              <p>RELOOVAのSaaSを日々の活動で利用</p>
+              <ul>
+                <li>活動・トレーニング記録</li>
+                <li>コンディション・動作・運営情報</li>
+              </ul>
+            </article>
+
+            <div class="ecosystem-exchange exchange-sports">
+              <div class="exchange-item exchange-forward">
+                <span aria-hidden="true">→</span>
+                <div><small>USE &amp; ACCUMULATE</small><strong>使うほど、SaaSに運動データが蓄積</strong></div>
+              </div>
+              <div class="exchange-item exchange-reverse">
+                <span aria-hidden="true">←</span>
+                <div><small>RETURN</small><strong>収益の一部をスポーツ現場へ還元</strong></div>
+              </div>
             </div>
-            <div class="cycle-arrow"><span>利用</span><i aria-hidden="true">→</i></div>
-            <div class="cycle-step step-2 step-brand">
-              <span class="step-number">02</span>
-              <div class="step-icon mark-r" aria-hidden="true">R</div>
+
+            <article class="ecosystem-core">
+              <span class="core-mark">R</span>
+              <p class="ecosystem-label">PLATFORM</p>
               <h3>RELOOVA</h3>
-              <p>記録・管理を支援</p>
+              <div class="core-process">
+                <span><b>01</b>蓄積</span>
+                <i aria-hidden="true">→</i>
+                <span><b>02</b>加工</span>
+                <i aria-hidden="true">→</i>
+                <span><b>03</b>提供</span>
+              </div>
+              <p>本人・保護者等の適切な同意を前提に、データの利用範囲や加工方法を設計</p>
+            </article>
+
+            <div class="ecosystem-exchange exchange-business">
+              <div class="exchange-item exchange-forward">
+                <span aria-hidden="true">→</span>
+                <div><small>DATA FOR R&amp;D</small><strong>加工したデータを研究・開発用途へ提供</strong></div>
+              </div>
+              <div class="exchange-item exchange-reverse">
+                <span aria-hidden="true">←</span>
+                <div><small>B2B REVENUE</small><strong>データ利用料・共同研究費・実証実験費</strong></div>
+              </div>
             </div>
-            <div class="cycle-arrow"><span>蓄積</span><i aria-hidden="true">→</i></div>
-            <div class="cycle-step step-3">
-              <span class="step-number">03</span>
-              <div class="step-icon" aria-hidden="true">⌁</div>
-              <h3>運動データ</h3>
-              <p>適切な同意を前提に加工</p>
-            </div>
-            <div class="cycle-arrow"><span>活用</span><i aria-hidden="true">→</i></div>
-            <div class="cycle-step step-4">
-              <span class="step-number">04</span>
-              <div class="step-icon" aria-hidden="true">⌂</div>
+
+            <article class="ecosystem-party party-business">
+              <p class="ecosystem-label">RESEARCH &amp; BUSINESS</p>
+              <div class="ecosystem-icon" aria-hidden="true">⌂</div>
               <h3>研究機関・企業</h3>
-              <p>研究・製品開発に活用</p>
-            </div>
+              <p>運動データを研究・製品開発に活用</p>
+              <ul>
+                <li>大学・研究機関</li>
+                <li>スポーツ・ヘルスケア企業等</li>
+              </ul>
+            </article>
           </div>
 
-          <div class="return-flow">
-            <div class="return-line" aria-hidden="true"><span></span></div>
-            <div class="return-items">
-              <div><span>05</span><strong>研究・製品開発</strong><small>共同研究・実証実験等を想定</small></div>
-              <i aria-hidden="true">→</i>
-              <div><span>06</span><strong>収益</strong><small>データ利用料・共同研究費等</small></div>
-              <i aria-hidden="true">→</i>
-              <div class="return-highlight"><span>07</span><strong>スポーツ現場へ還元</strong><small>備品・遠征費等の負担軽減へ</small></div>
-            </div>
+          <div class="model-outcome">
+            <span>目指す循環</span>
+            <p>研究機関・企業から得るB2B収益の一部を、備品・ユニフォーム・遠征費・大会参加費など、スポーツ現場の負担軽減につなげます。</p>
           </div>
 
           <div class="consent-note">
@@ -253,36 +299,41 @@
           <div class="section-heading heading-split">
             <div>
               <p class="section-number">04 — STAKEHOLDERS</p>
-              <h2 id="stakeholder-title">関わる人、それぞれに<br />新しい選択肢を。</h2>
+              <h2 id="stakeholder-title">それぞれの現在を、<br />次の状態へ。</h2>
             </div>
-            <p>一方だけが価値を得るのではなく、スポーツ現場と研究開発の双方が継続的につながる関係を設計します。</p>
+            <p>RELOOVAが構想する変化を、関係者ごとの「As Is（現在）」と「To Be（目指す状態）」で整理します。</p>
           </div>
 
           <div class="stakeholder-list">
             <article>
-              <span class="stakeholder-number">01</span>
-              <h3>生徒・選手</h3>
-              <p>自分の活動やコンディションを振り返り、成長と安全な競技継続につなげる。</p>
+              <div class="stakeholder-person"><span class="stakeholder-number">01</span><h3>生徒・選手</h3></div>
+              <div class="stakeholder-state state-as-is"><small>AS IS</small><p>活動やコンディションの記録が残らず、自分の変化を振り返りにくい。</p></div>
+              <i aria-hidden="true">→</i>
+              <div class="stakeholder-state state-to-be"><small>TO BE</small><p>日々の記録から成長と状態を振り返り、安全な競技継続につなげる。</p></div>
             </article>
             <article>
-              <span class="stakeholder-number">02</span>
-              <h3>教員・外部指導者</h3>
-              <p>記録と情報共有を一元化し、指導や安全管理を支える情報にアクセスする。</p>
+              <div class="stakeholder-person"><span class="stakeholder-number">02</span><h3>教員・外部指導者</h3></div>
+              <div class="stakeholder-state state-as-is"><small>AS IS</small><p>記録や選手情報が分散し、指導者間の引き継ぎや状態把握に負担がかかる。</p></div>
+              <i aria-hidden="true">→</i>
+              <div class="stakeholder-state state-to-be"><small>TO BE</small><p>情報を一元化し、立場をまたいだ共有と安全管理を行いやすくする。</p></div>
             </article>
             <article>
-              <span class="stakeholder-number">03</span>
-              <h3>学校・地域クラブ</h3>
-              <p>地域展開後も関係者間の連携を保ち、運営負担と活動費の軽減を目指す。</p>
+              <div class="stakeholder-person"><span class="stakeholder-number">03</span><h3>学校・地域クラブ</h3></div>
+              <div class="stakeholder-state state-as-is"><small>AS IS</small><p>地域展開で運営主体が分かれ、連携の複雑さと活動費の負担が残る。</p></div>
+              <i aria-hidden="true">→</i>
+              <div class="stakeholder-state state-to-be"><small>TO BE</small><p>運営情報をつなぎ、将来的な収益還元によって活動費負担の軽減を目指す。</p></div>
             </article>
             <article>
-              <span class="stakeholder-number">04</span>
-              <h3>大学・研究者</h3>
-              <p>適切な手続きのもと、継続的な運動データを研究に活かせる環境を目指す。</p>
+              <div class="stakeholder-person"><span class="stakeholder-number">04</span><h3>大学・研究者</h3></div>
+              <div class="stakeholder-state state-as-is"><small>AS IS</small><p>被験者募集や測定、データ整備に時間とコストがかかり、継続データを得にくい。</p></div>
+              <i aria-hidden="true">→</i>
+              <div class="stakeholder-state state-to-be"><small>TO BE</small><p>適切な手続きを経た継続的な運動データを、研究に活かせる環境を目指す。</p></div>
             </article>
             <article>
-              <span class="stakeholder-number">05</span>
-              <h3>スポーツ・ヘルスケア企業</h3>
-              <p>製品・サービスの研究開発や実証につながるデータ活用の可能性を広げる。</p>
+              <div class="stakeholder-person"><span class="stakeholder-number">05</span><h3>スポーツ・ヘルスケア企業</h3></div>
+              <div class="stakeholder-state state-as-is"><small>AS IS</small><p>実環境の運動データを一定規模で集めることが難しく、取得コストも大きい。</p></div>
+              <i aria-hidden="true">→</i>
+              <div class="stakeholder-state state-to-be"><small>TO BE</small><p>適切に加工されたデータを、製品・サービスの研究開発や実証に活用する。</p></div>
             </article>
           </div>
         </div>
@@ -291,25 +342,23 @@
       <section id="founder" class="section founder-section" aria-labelledby="founder-title">
         <div class="container founder-grid">
           <div class="founder-photo">
-            <!-- 写真を追加するときは、下記srcを実際の画像ファイルへ差し替えてください -->
             <img
-              src="assets/images/founder-photo-placeholder.svg"
-              alt="町塚 心のプロフィール写真差し替え予定位置"
-              width="720"
-              height="900"
+              src="assets/images/founder-photo.png"
+              alt="RELOOVA代表 町塚 心"
+              width="1254"
+              height="1254"
             />
-            <p>プロフィール写真は後から差し替え予定</p>
           </div>
           <div class="founder-copy">
             <p class="section-number">05 — FOUNDER</p>
             <p class="founder-role">RELOOVA 代表</p>
             <h2 id="founder-title">町塚 心 <small>Shin Machizuka</small></h2>
-            <p class="founder-lead">教育現場、スポーツ科学、データ。<br />3つの領域を横断した経験からRELOOVAを構想。</p>
+            <p class="founder-lead">大学で教育と運動生理学、大学院でバイオメカニクス、企業でデータ基盤。<br />3つの経験をつなぎ、RELOOVAを構想。</p>
             <ul class="founder-facts">
-              <li><span>EDUCATION</span>日本体育大学体育学部体育学科で学び、中学校・高等学校の保健体育および特別支援学校の教員免許を取得</li>
-              <li><span>RESEARCH</span>大学院でバイオメカニクス・動作解析を専攻し、人の動きを力学とデータの両面から研究</li>
-              <li><span>DATA</span>Analytics Engineerとして、データモデリング・データマネジメント・分析基盤に関わる業務に従事</li>
-              <li><span>RELOOVA</span>教育現場、スポーツ科学、データの3領域を横断した経験をもとに事業を構想</li>
+              <li><span>UNIVERSITY</span>中学校・高等学校の保健体育および特別支援学校の教員免許を取得。運動生理学・運動処方演習を学び、運動処方学研究室に所属</li>
+              <li><span>GRADUATE</span>大学院ではバイオメカニクスを専攻。動作解析を用いて、人の動きを力学的な側面から分析・研究</li>
+              <li><span>CAREER</span>Analytics Engineerとして、データモデリング・データマネジメント・分析基盤に関わる業務に従事</li>
+              <li><span>RELOOVA</span>本業と並行して、RELOOVAの構想・仮説検証・事業化準備に取り組んでいる</li>
             </ul>
           </div>
         </div>
