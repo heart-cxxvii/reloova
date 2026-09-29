@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="900" viewBox="0 0 720 900" role="img" aria-labelledby="title desc">
+  <title id="title">代表者プロフィール写真の差し替え枠</title>
+  <desc id="desc">町塚心のプロフィール写真を後から配置するためのプレースホルダー</desc>
+  <rect width="720" height="900" fill="#E8EEF7"/>
+  <path d="M0 0h720v900H0z" fill="url(#grid)" opacity=".45"/>
+  <circle cx="360" cy="357" r="108" fill="#FFFFFF" stroke="#C8D5E7" stroke-width="3"/>
+  <circle cx="360" cy="326" r="42" fill="#BCD0E8"/>
+  <path d="M275 421c10-64 47-96 85-96s75 32 85 96" fill="#BCD0E8"/>
+  <rect x="224" y="520" width="272" height="2" fill="#B4C5DB"/>
+  <text x="360" y="578" text-anchor="middle" fill="#51657E" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="4">FOUNDER PHOTO</text>
+  <text x="360" y="622" text-anchor="middle" fill="#7C8DA2" font-family="sans-serif" font-size="18">プロフィール写真をここに配置</text>
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#BFCDE0" stroke-width="1"/>
+    </pattern>
+  </defs>
+</svg>

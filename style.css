@@ -438,7 +438,6 @@ button {
 }
 
 .section-heading h2,
-.vision-copy h2,
 .contact-section h2 {
   margin: 0;
   color: var(--ink-deep);
@@ -475,21 +474,6 @@ button {
   padding: 36px 32px;
   background: var(--mist);
   border-top: 3px solid var(--ink-deep);
-}
-
-.problem-card-accent {
-  color: #fff;
-  background: var(--ink-deep);
-  border-color: var(--blue);
-}
-
-.problem-card-accent h3,
-.problem-card-accent .card-index {
-  color: #fff;
-}
-
-.problem-card-accent p {
-  color: #c2cede;
 }
 
 .line-icon {
@@ -960,91 +944,6 @@ button {
   font-size: 13px;
 }
 
-.vision-section {
-  color: #fff;
-  background: linear-gradient(120deg, #1262ee 0%, #174fbd 100%);
-}
-
-.vision-grid {
-  display: grid;
-  grid-template-columns: 0.92fr 1.08fr;
-  gap: 100px;
-  align-items: center;
-}
-
-.vision-copy h2 {
-  color: #fff;
-}
-
-.vision-copy > p:last-child {
-  margin: 28px 0 0;
-  color: #d5e3ff;
-  font-size: 14px;
-}
-
-.vision-roadmap {
-  position: relative;
-}
-
-.vision-roadmap::before {
-  position: absolute;
-  top: 38px;
-  bottom: 38px;
-  left: 51px;
-  width: 1px;
-  background: rgba(255, 255, 255, 0.25);
-  content: "";
-}
-
-.roadmap-item {
-  position: relative;
-  display: grid;
-  grid-template-columns: 74px 1fr;
-  gap: 25px;
-  align-items: center;
-  min-height: 110px;
-  margin-bottom: 12px;
-  padding: 18px 25px;
-  background: rgba(5, 30, 79, 0.24);
-  border: 1px solid rgba(255, 255, 255, 0.19);
-  border-radius: 7px;
-}
-
-.roadmap-item > span {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  width: 55px;
-  height: 55px;
-  background: #2e6edc;
-  border: 1px solid rgba(255, 255, 255, 0.33);
-  border-radius: 50%;
-  font-size: 9px;
-  font-weight: 850;
-}
-
-.roadmap-current > span {
-  color: var(--ink-deep);
-  background: var(--aqua);
-  border-color: var(--aqua);
-}
-
-.roadmap-item strong,
-.roadmap-item small {
-  display: block;
-}
-
-.roadmap-item strong {
-  margin-bottom: 3px;
-  font-size: 14px;
-}
-
-.roadmap-item small {
-  color: #d0def9;
-  font-size: 10px;
-}
-
 .founder-section {
   background: var(--mist);
 }
@@ -1056,53 +955,34 @@ button {
   align-items: center;
 }
 
-.founder-mark {
+.founder-photo {
   position: relative;
-  display: grid;
-  place-items: center;
-  aspect-ratio: 1;
   max-width: 430px;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 50%;
+  margin: 0;
   box-shadow: var(--shadow);
 }
 
-.founder-mark::before,
-.founder-mark::after {
-  position: absolute;
-  border: 1px dashed #b9cbe1;
-  border-radius: 50%;
-  content: "";
+.founder-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: #e8eef7;
 }
 
-.founder-mark::before { inset: 18%; }
-.founder-mark::after { inset: 34%; background: var(--blue-soft); border-style: solid; }
-
-.founder-mark strong {
-  position: relative;
-  z-index: 1;
-  color: var(--blue);
-  font-size: 65px;
-  line-height: 1;
-}
-
-.founder-mark span {
+.founder-photo p {
   position: absolute;
-  z-index: 1;
-  padding: 7px 12px;
-  color: var(--ink-deep);
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 999px;
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+  margin: 0;
+  padding: 9px 12px;
+  color: #6c7c90;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
   font-size: 9px;
-  font-weight: 850;
-  letter-spacing: 0.12em;
+  font-weight: 750;
+  text-align: center;
 }
-
-.founder-mark span:nth-child(1) { top: 13%; left: 40%; }
-.founder-mark span:nth-child(2) { right: 4%; bottom: 25%; }
-.founder-mark span:nth-child(3) { bottom: 21%; left: 4%; }
 
 .founder-role {
   margin: 0 0 5px;
@@ -1402,7 +1282,6 @@ button {
 
   .heading-split,
   .model-heading,
-  .vision-grid,
   .founder-grid,
   .contact-inner {
     grid-template-columns: 1fr;
@@ -1410,7 +1289,6 @@ button {
   }
 
   .section-heading h2,
-  .vision-copy h2,
   .contact-section h2 {
     font-size: 30px;
     line-height: 1.45;
@@ -1531,21 +1409,7 @@ button {
     grid-column: 2;
   }
 
-  .vision-grid {
-    gap: 45px;
-  }
-
-  .vision-roadmap::before {
-    left: 48px;
-  }
-
-  .roadmap-item {
-    grid-template-columns: 65px 1fr;
-    gap: 16px;
-    padding: 16px;
-  }
-
-  .founder-mark {
+  .founder-photo {
     width: min(90vw, 340px);
     margin: 0 auto;
   }

@@ -6,15 +6,16 @@ RELOOVAは、学校の部活動や地域スポーツクラブで生まれる運�
 
 ## ローカルでの確認方法
 
-ビルドは不要です。`index.html`をブラウザで直接開くか、任意の静的ファイルサーバーを使用してください。
+ビルドは不要です。ターミナルを開き、最初に`cd`（Change Directory）でこのプロジェクトのフォルダへ移動してから、静的ファイルサーバーを起動します。
 
 例：
 
 ```bash
+cd /path/to/reloova
 python3 -m http.server 8000
 ```
 
-起動後、`http://localhost:8000`をブラウザで開きます。
+`/path/to/reloova`は、自分のPC上にあるRELOOVAフォルダのパスへ置き換えてください。起動後、ターミナルを閉じずに`http://localhost:8000`をブラウザで開きます。サーバーを停止するときは、ターミナルで`Control + C`を押します。
 
 ## ファイル構成
 
@@ -28,6 +29,7 @@ python3 -m http.server 8000
     ├── logo.svg            # ロゴ（差し替え可能）
     ├── favicon.svg         # favicon（差し替え可能）
     └── images/
+        ├── founder-photo-placeholder.svg # 代表者写真の差し替え枠
         ├── og-image.svg    # OGP画像の編集元
         └── og-image.png    # OGP画像（差し替え可能）
 ```
@@ -41,6 +43,7 @@ Cloudflare Pagesへの将来的なデプロイを想定した静的構成です�
 - `index.html`内の連絡先メールアドレス（`contact@example.com`）
 - `assets/logo.svg`
 - `assets/favicon.svg`
+- `assets/images/founder-photo-placeholder.svg`（代表者写真へ差し替え）
 - `assets/images/og-image.png`
 - 公開URL確定後のcanonical URLとOGP画像の絶対URL
 
