@@ -30,6 +30,7 @@ python3 -m http.server 8000
     ├── favicon.svg         # favicon（差し替え可能）
     └── images/
         ├── founder-photo.png # 代表者プロフィール写真
+        ├── business-model-infographic.png # ヒーローに使用する事業構想図
         ├── og-image.svg    # OGP画像の編集元
         └── og-image.png    # OGP画像（差し替え可能）
 ```
