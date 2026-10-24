@@ -1,53 +1,73 @@
 # RELOOVA Official Website
 
-RELOOVA（リルーヴァ）の公式ランディングページです。
+RELOOVA（リルーヴァ）の公式ランディングページです。学校・地域スポーツで生まれる運動データを研究開発につなぎ、その価値の一部をスポーツ現場へ還元する仕組みを構想しています。
 
-RELOOVAは、学校の部活動や地域スポーツクラブで生まれる運動データを研究・製品開発につなぎ、そこから生まれた価値の一部をスポーツ現場へ還元する仕組みを目指す、検証・開発準備段階の事業です。
+現在は事業アイデアの検証・開発準備段階です。掲載している機能や事業モデルは構想・開発予定であり、導入実績やサービス提供開始を示すものではありません。
 
-## ローカルでの確認方法
+## 使用技術
 
-ビルドは不要です。ターミナルを開き、最初に`cd`（Change Directory）でこのプロジェクトのフォルダへ移動してから、静的ファイルサーバーを起動します。
+- Astro 7.4.2（Static Site Generation）
+- HTML / CSS / 必要最小限のVanilla JavaScript
+- React、Vue、Next.js、Tailwind CSS、外部CDNは使用していません
 
-例：
-
-```bash
-cd /path/to/reloova
-python3 -m http.server 8000
-```
-
-`/path/to/reloova`は、自分のPC上にあるRELOOVAフォルダのパスへ置き換えてください。起動後、ターミナルを閉じずに`http://localhost:8000`をブラウザで開きます。サーバーを停止するときは、ターミナルで`Control + C`を押します。
-
-## ファイル構成
+## ディレクトリ構成
 
 ```text
 .
-├── index.html              # LP本体
-├── style.css               # スタイル・レスポンシブ対応
-├── script.js               # モバイルナビゲーション等
-├── README.md
-└── assets/
-    ├── logo.svg            # ロゴ（差し替え可能）
-    ├── favicon.svg         # favicon（差し替え可能）
-    └── images/
-        ├── reloova-logo-primary.png # ヘッダーのロゴ
-        ├── founder-photo.png # 代表者プロフィール写真
-        ├── business-model-infographic.png # ヒーローに使用する事業構想図
-        ├── og-image.svg    # OGP画像の編集元
-        └── og-image.png    # OGP画像（差し替え可能）
+├── public/
+│   └── assets/                 # ロゴ、favicon、写真、OGP画像など
+├── src/
+│   ├── components/
+│   │   ├── Header.astro
+│   │   ├── Footer.astro
+│   │   └── sections/           # Hero / About / Product / BusinessModel など
+│   ├── layouts/
+│   │   └── BaseLayout.astro
+│   ├── pages/
+│   │   └── index.astro
+│   └── styles/
+│       └── global.css
+├── astro.config.mjs
+├── package.json
+└── README.md
 ```
 
-## 将来の公開について
+## ローカル起動
 
-Cloudflare Pagesへの将来的なデプロイを想定した静的構成です。フレームワーク、npm、ビルド処理、外部CDNは使用していません。デプロイ時はリポジトリ直下を公開ディレクトリとして設定できます。
+Node.jsを用意し、ターミナルでプロジェクトフォルダへ移動して実行します。
 
-## 公開前の差し替え項目
+```bash
+cd /path/to/reloova
+npm ci
+npm run dev
+```
 
-- `index.html`内の連絡先メールアドレス（`contact@example.com`）
-- `assets/logo.svg`
-- `assets/favicon.svg`
-- `assets/images/og-image.png`
-- 公開URL確定後のcanonical URLとOGP画像の絶対URL
+表示されたローカルURL（通常は `http://localhost:4321`）をブラウザで開いてください。
 
-## 現在の事業段階について
+## ビルド
 
-このWebサイトに記載された機能、データ活用、事業モデルは現在構想・検証中です。導入実績やサービス提供開始を示すものではありません。
+```bash
+npm run build
+```
+
+生成物は `dist/` に出力されます。確認する場合は `npm run preview` を実行します。
+
+## Cloudflare Pages
+
+Cloudflare PagesのGit連携では、次の設定で静的サイトとしてデプロイできます。
+
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Node.js: Astro 7.4.2が動作する安定版（Node.js 22系以上を推奨）
+
+ドメインは未確定のため、canonical URLは設定していません。公開URLが決まった時点で、`src/layouts/BaseLayout.astro`のcanonicalとOGP絶対URLを追加してください。
+
+## コンテンツ・デザインの更新
+
+- ページ全体のメタ情報は `src/layouts/BaseLayout.astro`
+- 共通ヘッダー・モバイルナビゲーションは `src/components/Header.astro`
+- 各セクションの文章とマークアップは `src/components/sections/`
+- 色、余白、レスポンシブレイアウトは `src/styles/global.css`
+- ロゴ、favicon、写真、OGP画像は `public/assets/`
+
+連絡先を変更する場合は、`src/components/sections/Contact.astro`のメールアドレスを差し替えてください。
