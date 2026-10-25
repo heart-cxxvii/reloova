@@ -20,7 +20,7 @@ RELOOVA（リルーヴァ）の公式ランディングページです。学校�
 │   ├── components/
 │   │   ├── Header.astro
 │   │   ├── Footer.astro
-│   │   └── sections/           # Hero / About / Product / BusinessModel など
+│   │   └── sections/           # Hero / About / Solution / Product など
 │   ├── layouts/
 │   │   └── BaseLayout.astro
 │   ├── pages/

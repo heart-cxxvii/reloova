@@ -9,8 +9,9 @@
       <span></span><span></span><span></span>
     </button>
     <nav id="global-nav" class="global-nav" aria-label="メインナビゲーション" data-nav>
-      <a href="#about">RELOOVAについて</a>
-      <a href="#model">事業モデル</a>
+      <a href="#problem">課題</a>
+      <a href="#solution">仕組み</a>
+      <a href="#product">SaaS構想</a>
       <a href="#founder">代表者</a>
       <a class="nav-contact" href="#contact">お問い合わせ</a>
     </nav>
@@ -21,22 +22,19 @@
   const header = document.querySelector("[data-header]");
   const nav = document.querySelector("[data-nav]");
   const navToggle = document.querySelector("[data-nav-toggle]");
-
   const closeNav = () => {
     nav?.classList.remove("is-open");
     navToggle?.setAttribute("aria-expanded", "false");
     navToggle?.setAttribute("aria-label", "メニューを開く");
     document.body.classList.remove("nav-open");
   };
-
   navToggle?.addEventListener("click", () => {
-    const willOpen = navToggle.getAttribute("aria-expanded") !== "true";
-    nav?.classList.toggle("is-open", willOpen);
-    navToggle.setAttribute("aria-expanded", String(willOpen));
-    navToggle.setAttribute("aria-label", willOpen ? "メニューを閉じる" : "メニューを開く");
-    document.body.classList.toggle("nav-open", willOpen);
+    const opening = navToggle.getAttribute("aria-expanded") !== "true";
+    nav?.classList.toggle("is-open", opening);
+    navToggle.setAttribute("aria-expanded", String(opening));
+    navToggle.setAttribute("aria-label", opening ? "メニューを閉じる" : "メニューを開く");
+    document.body.classList.toggle("nav-open", opening);
   });
-
   nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeNav));
-  window.addEventListener("scroll", () => header?.classList.toggle("is-scrolled", window.scrollY > 12), { passive: true });
+  window.addEventListener("scroll", () => header?.classList.toggle("is-scrolled", window.scrollY > 8), { passive: true });
 </script>
