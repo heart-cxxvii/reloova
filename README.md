@@ -71,3 +71,7 @@ Cloudflare PagesのGit連携では、次の設定で静的サイトとしてデ�
 - ロゴ、favicon、写真、OGP画像は `public/assets/`
 
 連絡先を変更する場合は、`src/components/sections/Contact.astro`のメールアドレスを差し替えてください。
+
+## 写真素材
+
+トップページで使用するストック写真は外部CDNに依存せず `public/assets/images/` に保管しています。撮影者・出典・ライセンスは同ディレクトリの `ATTRIBUTIONS.md` を確認してください。写真を差し替える場合も、同ファイルに出典とライセンスを追記してください。
