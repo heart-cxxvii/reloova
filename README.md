@@ -7,8 +7,9 @@ RELOOVA（リルーヴァ）の公式ランディングページです。学校�
 ## 使用技術
 
 - Astro 7.4.2（Static Site Generation）
-- HTML / CSS / 必要最小限のVanilla JavaScript
-- React、Vue、Next.js、Tailwind CSS、外部CDNは使用していません
+- HTML / Astro
+- Tailwind CSS 4
+- React、Vue、Next.js、外部CDNは使用していません
 
 ## ディレクトリ構成
 

@@ -9,6 +9,9 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "7.4.2"
+    "@fontsource/inter": "^5.2.8",
+    "@tailwindcss/vite": "^4.2.4",
+    "astro": "7.4.2",
+    "tailwindcss": "^4.2.4"
   }
 }
