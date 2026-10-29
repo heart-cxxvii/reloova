@@ -7,6 +7,7 @@ These files are stock photographs selected for the RELOOVA website. They are sto
 | `hero-runners.jpg` | Jonathan Chng | https://unsplash.com/photos/runners-on-field-rkp_-i5ABOE | Unsplash License | 2026-10-25 |
 | `team-coaching.jpg` | cottonbro studio | https://www.pexels.com/photo/a-man-in-black-shirt-coaching-a-team-of-women-athletes-6767348/ | Pexels License | 2026-10-25 |
 | `research-lab.jpg` | Tima Miroshnichenko | https://www.pexels.com/photo/scientists-working-in-a-lab-9574338/ | Pexels License | 2026-10-25 |
+| `school-club.webp` | AI-generated for RELOOVA | OpenAI image generation | Project asset | 2026-10-29 |
 
 License references:
 
