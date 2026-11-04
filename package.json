@@ -6,12 +6,19 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "prettier --check src astro.config.mjs package.json tsconfig.json .prettierrc.json"
   },
   "dependencies": {
-    "@fontsource/inter": "^5.2.8",
     "@tailwindcss/vite": "^4.2.4",
     "astro": "7.4.2",
     "tailwindcss": "^4.2.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.2",
+    "typescript": "^6.0.3"
   }
 }

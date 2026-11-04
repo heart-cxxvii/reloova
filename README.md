@@ -45,6 +45,17 @@ npm run dev
 
 表示されたローカルURL（通常は `http://localhost:4321`）をブラウザで開いてください。
 
+## 品質確認
+
+```bash
+npm run lint
+npm run check
+npm run build
+```
+
+`lint` は Prettier による整形チェック、`check` は Astro / TypeScript の診断です。
+Google Fonts から Zen Kaku Gothic New を読み込み、通信できない場合は日本語システムフォントで表示します。
+
 ## ビルド
 
 ```bash
@@ -66,7 +77,7 @@ Cloudflare PagesのGit連携では、次の設定で静的サイトとしてデ�
 ## コンテンツ・デザインの更新
 
 - ページ全体のメタ情報は `src/layouts/BaseLayout.astro`
-- 共通ヘッダー・モバイルナビゲーションは `src/components/Header.astro`
+- 共通ヘッダー・About / Contact ナビゲーションは `src/components/Header.astro`
 - 各セクションの文章とマークアップは `src/components/sections/`
 - 色、余白、レスポンシブレイアウトは `src/styles/global.css`
 - ロゴ、favicon、写真、OGP画像は `public/assets/`
