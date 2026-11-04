@@ -1,1 +1,100 @@
-<section id="product" class="section product-section" aria-labelledby="product-title"><div class="container product-layout"><div class="product-image" data-reveal><img src="/assets/images/team-coaching.jpg" alt="スポーツ施設で選手たちに話すコーチ" width="1800" height="2700" loading="lazy" /><p>FOR THE SPORTS FIELD</p></div><div class="product-copy"><div class="section-intro" data-reveal><p class="section-label">02 / SaaS CONCEPT</p><h2 id="product-title">日々の活動を、<br />次の価値につなげる。</h2><p>RELOOVAの学校・地域クラブ向けSaaSでは、日々の活動記録、選手の状態、動作、チーム運営をひとつにつなぐことを目指しています。</p></div><ol class="feature-list" data-reveal><li><span>01</span><div><div class="feature-title"><h3>活動記録</h3><small>開発予定</small></div><p>練習内容やトレーニング履歴を蓄積し、チームと選手の歩みを継続的に確認できる仕組み。</p></div></li><li><span>02</span><div><div class="feature-title"><h3>コンディション管理</h3><small>開発予定</small></div><p>選手が疲労度・体調・怪我などを入力し、教員や外部指導者が確認できる仕組み。</p></div></li><li><span>03</span><div><div class="feature-title"><h3>動作フィードバック</h3><small>構想中</small></div><p>スマートフォン等の動画から姿勢推定や動作分析を行い、フォームを振り返る仕組み。</p></div></li><li><span>04</span><div><div class="feature-title"><h3>チーム運営</h3><small>開発予定</small></div><p>学校・教員・外部指導者・生徒の情報を、地域展開後も一元管理できる仕組み。</p></div></li></ol><p class="section-disclaimer">※ 記載の機能は現時点での構想・開発予定であり、提供内容は検証を通じて変更される可能性があります。</p></div></div></section>
+---
+const features = [
+  {
+    title: "活動記録",
+    text: "練習内容やトレーニング履歴を蓄積し、チームと選手の歩みを継続的に確認。",
+    icon: "record",
+  },
+  {
+    title: "コンディション管理",
+    text: "疲労度・体調・怪我などを記録し、教員や外部指導者と共有。",
+    icon: "condition",
+  },
+  {
+    title: "動作フィードバック",
+    text: "動画から姿勢や動作を分析し、日々のフォームを振り返る。",
+    icon: "motion",
+  },
+  {
+    title: "チーム運営",
+    text: "学校・教員・外部指導者・生徒の情報をひとつにつなぐ。",
+    icon: "team",
+  },
+];
+---
+
+<section
+  id="product"
+  class="section product-section"
+  aria-labelledby="product-title"
+>
+  <div class="container">
+    <div class="product-intro">
+      <div class="section-intro">
+        <p class="eyebrow">PRODUCT</p>
+        <h2 id="product-title">
+          日々の活動を、
+          <br />
+          次の価値につなげる。
+        </h2>
+        <p class="section-description">
+          学校・地域クラブ向けの仕組みで、活動記録、選手の状態、動作、チーム運営をひとつにつなぎます。
+        </p>
+      </div>
+      <img
+        class="product-photo"
+        src="/assets/images/team-coaching.jpg"
+        alt="スポーツ施設で選手たちに話すコーチ"
+        width="1800"
+        height="2700"
+        loading="lazy"
+      />
+    </div>
+    <div class="feature-grid">
+      {features.map(({ title, text, icon }) => (
+        <article class="feature-card">
+          <span class="feature-icon" aria-hidden="true">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              {icon === "record" && (
+                <>
+                  <rect x="5" y="4" width="14" height="17" rx="2" />
+                  <path d="M9 3h6v3H9zM9 11h6M9 15h6" />
+                </>
+              )}
+              {icon === "condition" && (
+                <>
+                  <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z" />
+                  <path d="M4 12h4l2-4 3 8 2-4h5" />
+                </>
+              )}
+              {icon === "motion" && (
+                <>
+                  <rect x="3" y="4" width="18" height="16" rx="3" />
+                  <path d="m10 8 6 4-6 4V8Z" />
+                </>
+              )}
+              {icon === "team" && (
+                <>
+                  <circle cx="9" cy="8" r="3" />
+                  <path d="M3 21v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6M21 21v-2a6 6 0 0 0-3-5.2" />
+                </>
+              )}
+            </svg>
+          </span>
+          <h3>{title}</h3>
+          <p>{text}</p>
+        </article>
+      ))}
+    </div>
+    <p class="section-note">掲載している機能は構想・開発予定です。</p>
+  </div>
+</section>
