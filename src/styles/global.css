@@ -450,6 +450,26 @@ h3 {
 .footer-inner small {
   font-size: 12px;
 }
+.analytics-notice {
+  max-width: 72ch;
+  margin-top: 20px;
+  font-size: 13px;
+}
+.analytics-notice summary {
+  width: fit-content;
+  color: var(--accent);
+  cursor: pointer;
+}
+.analytics-notice p {
+  margin-top: 12px;
+}
+.analytics-notice a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.analytics-notice a:hover {
+  color: var(--accent-hover);
+}
 
 @media (min-width: 1440px) {
   .hero {

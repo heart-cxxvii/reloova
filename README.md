@@ -9,7 +9,8 @@ RELOOVA（リルーヴァ）の公式ランディングページです。学校�
 - Astro 7.4.2（Static Site Generation）
 - HTML / Astro
 - Tailwind CSS 4
-- React、Vue、Next.js、外部CDNは使用していません
+- React、Vue、Next.jsは使用していません
+- フォントはGoogle Fonts、アクセス解析はGoogle Tag Manager経由のGoogle Analyticsを使用します
 
 ## ディレクトリ構成
 
@@ -73,6 +74,23 @@ Cloudflare PagesのGit連携では、次の設定で静的サイトとしてデ�
 - Node.js: Astro 7.4.2が動作する安定版（Node.js 22系以上を推奨）
 
 ドメインは未確定のため、canonical URLは設定していません。公開URLが決まった時点で、`src/layouts/BaseLayout.astro`のcanonicalとOGP絶対URLを追加してください。
+
+## アクセス解析
+
+- GTMコンテナ: `GTM-N36JCMSV`（RELOOVA / reloova.app）
+- GA4プロパティ: `RELOOVA公式サイト`（`562916206`）、アカウント: `RELOOVA`（`415217453`）
+- Webストリーム: `RELOOVA公式サイト（Web）`（`16283704913`）、測定ID: `G-NXDVEEN43L`
+- [GTM管理画面](https://tagmanager.google.com/#/container/accounts/6402956141/containers/285517851/workspaces/2) / [GA4管理画面](https://analytics.google.com/analytics/web/#/a415217453p562916206/reports/intelligenthome)
+- GTMの設置処理: `src/components/GoogleTagManager.astro`
+- コンテナIDの指定: `src/layouts/BaseLayout.astro`
+- GA4の接続先と計測設定はGTMで管理し、サイトへ別のGA4タグを直接追加しないでください。
+- Cloudflare Pagesの`main`ブランチの本番ビルドだけにGTMを出力します。開発環境とブランチプレビューには出力しません。
+- 本番ビルドでも、`reloova.app`と`www.reloova.app`以外のホストではGTMを読み込みません。
+- 設置コードはGTM管理画面が発行する最適化済みコンテナ用の形式を使用します。
+- フッターの「アクセス解析について」から、Googleのデータ利用と無効化方法を確認できます。
+
+本番用コードを含めたビルド確認は、`CF_PAGES_BRANCH=main npm run build`で実行できます。
+計測確認にはGTMのTag AssistantプレビューとGA4のDebugView／リアルタイムを使用してください。
 
 ## コンテンツ・デザインの更新
 
