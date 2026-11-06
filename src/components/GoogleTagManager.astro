@@ -1,0 +1,40 @@
+---
+interface Props {
+  containerId: string;
+}
+
+const { containerId } = Astro.props;
+
+if (!/^GTM-[A-Z0-9]+$/.test(containerId)) {
+  throw new Error("A valid Google Tag Manager container ID is required.");
+}
+
+// Do not collect production traffic from local development or Cloudflare previews.
+const enabled =
+  import.meta.env.PROD && import.meta.env.CF_PAGES_BRANCH === "main";
+---
+
+{enabled && <script is:inline define:vars={{ containerId }}>
+  (function (w, d) {
+    if (!["reloova.app", "www.reloova.app"].includes(w.location.hostname)) {
+      return;
+    }
+
+    // Use the installation snippet supplied by this optimized GTM container.
+    // GA4 destinations are configured in GTM; do not add another gtag config here.
+    w.dataLayer = w.dataLayer || [];
+    w.gtag =
+      w.gtag ||
+      function () {
+        w.dataLayer.push(arguments);
+      };
+    w.gtag("js", new Date());
+
+    var tagScript = d.createElement("script");
+    tagScript.async = true;
+    tagScript.src =
+      "https://www.googletagmanager.com/gtm.js?id=" +
+      encodeURIComponent(containerId);
+    d.head.appendChild(tagScript);
+  })(window, document);
+</script>}
