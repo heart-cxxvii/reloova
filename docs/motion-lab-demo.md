@@ -10,7 +10,7 @@ The processed video comes from RDNE Stock project / Pexels, “A Woman Doing Squ
 
 ## Integration
 
-Work is isolated in `codex/motion-lab-demo`, based on production main `f05f78a`. Keep this PR in draft until `codex/gtm-ga4-setup` is integrated. Refresh from main then preserve the GTM component, head/body placements, and tracking configuration. The BaseLayout change only adds optional title/description props; the demo reuses BaseLayout rather than copying tracking markup.
+Work is isolated in `codex/motion-lab-demo`, based on production main `f05f78a`. GTM work was integrated from main `70511a0` on 2026-11-06. The GoogleTagManager component is byte-for-byte identical to main, including container `GTM-N36JCMSV`, production/main gating, and production hostname checks. The homepage motion-feedback card also links to the demo. The BaseLayout change only adds optional title/description props; the demo reuses BaseLayout rather than copying tracking markup.
 
 ## Verification
 

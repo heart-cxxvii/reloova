@@ -92,9 +92,27 @@ const features = [
           </span>
           <h3>{title}</h3>
           <p>{text}</p>
+          {icon === "motion" && (
+            <a class="motion-demo-link" href="/motion-lab/">
+              動作解析デモを見る <span aria-hidden="true">→</span>
+            </a>
+          )}
         </article>
       ))}
     </div>
     <p class="section-note">掲載している機能は構想・開発予定です。</p>
   </div>
 </section>
+
+<style>
+  .motion-demo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+</style>
