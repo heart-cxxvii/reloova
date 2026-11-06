@@ -1,0 +1,30 @@
+[
+  {
+    "repetition": 1,
+    "side": "left",
+    "start_frame": 101,
+    "bottom_frame": 153,
+    "end_frame": 213,
+    "descent_start_s": 3.3666666666666667,
+    "bottom_s": 5.1,
+    "ascent_start_s": 5.1,
+    "end_s": 7.1,
+    "duration_s": 3.733333333333333,
+    "min_knee_interior_deg": 57.3494287782666,
+    "max_trunk_inclination_deg": 32.74365144202373
+  },
+  {
+    "repetition": 2,
+    "side": "left",
+    "start_frame": 267,
+    "bottom_frame": 330,
+    "end_frame": 390,
+    "descent_start_s": 8.9,
+    "bottom_s": 11.0,
+    "ascent_start_s": 11.0,
+    "end_s": 13.0,
+    "duration_s": 4.1,
+    "min_knee_interior_deg": 53.91659932002693,
+    "max_trunk_inclination_deg": 33.02229625724551
+  }
+]

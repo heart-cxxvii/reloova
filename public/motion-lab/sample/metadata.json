@@ -1,0 +1,357 @@
+{
+  "schema_version": "1.0.0",
+  "analyzed_at": "2026-10-25T11:26:48.037267+00:00",
+  "input_filename": "sample.mp4",
+  "input_sha256": "4a206efe73ba6f83820511889066edd69593d243eb20058498e9c8fe157592bc",
+  "width": 720,
+  "height": 1280,
+  "fps": 30.0,
+  "frame_count": 491,
+  "duration_s": 16.366666666666667,
+  "camera_view": "oblique side/front approximately 45 degrees; visual assessment, not calibrated",
+  "coordinate_system": "pixel coordinates; top-left origin; +x right; +y down; 2D only",
+  "raw_identity": "detection_id is frame-local detector order; raw observations precede Sports2D tracking and confidence masking",
+  "processed_identity": "person_id 0 is Sports2D highest-likelihood tracked person; confidence before interpolation",
+  "model": "RTMPose body_with_feet balanced via RTMLib/Sports2D",
+  "backend": "onnxruntime",
+  "device": "cpu",
+  "checkpoints": [
+    {
+      "filename": "yolox_m_8xb8-300e_humanart-c2c7a14a.onnx",
+      "sha256": "3dea6513388889f0fff4b77bf7a26013600321b9eb9ceb0e9a400a82572f5f23",
+      "size_bytes": 101400344,
+      "source_url": "https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/yolox_m_8xb8-300e_humanart-c2c7a14a.zip"
+    },
+    {
+      "filename": "rtmpose-m_simcc-body7_pt-body7-halpe26_700e-256x192-4d3e73dd_20230605.onnx",
+      "sha256": "26f3a19e61304a600dfb82d1001d41d24343b89fc70a33ffc84657e0b0bf2ecf",
+      "size_bytes": 55685444,
+      "source_url": "https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-m_simcc-body7_pt-body7-halpe26_700e-256x192-4d3e73dd_20230605.zip"
+    }
+  ],
+  "versions": {
+    "sports2d": "0.8.34",
+    "rtmlib": "0.0.16",
+    "pose2sim": "0.10.49",
+    "onnxruntime": "1.31.0",
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "opencv-python": "5.0.0.93"
+  },
+  "selected_sports2d_track_index": 0,
+  "python": "3.12.10",
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "machine": "arm64",
+  "processor": "arm",
+  "settings": {
+    "confidence_threshold": 0.3,
+    "max_gap_frames": 5,
+    "cutoff_hz": 6.0,
+    "side": "left",
+    "start_flexion": 25.0,
+    "bottom_flexion": 55.0,
+    "end_flexion": 20.0,
+    "min_duration": 0.6,
+    "max_duration": 12.0,
+    "camera_view": "oblique side/front approximately 45 degrees; visual assessment, not calibrated"
+  },
+  "sports2d_config": {
+    "base": {
+      "video_input": [
+        "sample.mp4"
+      ],
+      "nb_persons_to_detect": 1,
+      "person_ordering_method": "highest_likelihood",
+      "first_person_height": 1.65,
+      "visible_side": [
+        "none"
+      ],
+      "load_trc_px": "",
+      "compare": false,
+      "time_range": [],
+      "video_dir": "",
+      "webcam_id": 0,
+      "input_size": [
+        1280,
+        720
+      ],
+      "show_realtime_results": false,
+      "save_vid": true,
+      "save_img": false,
+      "save_pose": true,
+      "calculate_angles": true,
+      "save_angles": true,
+      "result_dir": "sports2d/"
+    },
+    "pose": {
+      "slowmo_factor": 1.0,
+      "pose_model": "body_with_feet",
+      "mode": "balanced",
+      "det_frequency": 4,
+      "device": "cpu",
+      "backend": "onnxruntime",
+      "tracking_mode": "sports2d",
+      "predict_displacement": false,
+      "match_by": "keypoints",
+      "max_distance": 250,
+      "min_iou": 0.2,
+      "max_unseen_time": 1.0,
+      "deepsort_params": "{'max_age':30, 'n_init':3, 'nms_max_overlap':0.8, 'max_cosine_distance':0.3, 'nn_budget':200, 'max_iou_distance':0.8, 'embedder_gpu': True, 'embedder':'torchreid'}",
+      "keypoint_likelihood_threshold": 0.3,
+      "average_likelihood_threshold": 0.5,
+      "keypoint_number_threshold": 0.3,
+      "CUSTOM": {
+        "name": "Hip",
+        "id": 19,
+        "children": [
+          {
+            "name": "RHip",
+            "id": 12,
+            "children": [
+              {
+                "name": "RKnee",
+                "id": 14,
+                "children": [
+                  {
+                    "name": "RAnkle",
+                    "id": 16,
+                    "children": [
+                      {
+                        "name": "RBigToe",
+                        "id": 21,
+                        "children": [
+                          {
+                            "name": "RSmallToe",
+                            "id": 23
+                          }
+                        ]
+                      },
+                      {
+                        "name": "RHeel",
+                        "id": 25
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "LHip",
+            "id": 11,
+            "children": [
+              {
+                "name": "LKnee",
+                "id": 13,
+                "children": [
+                  {
+                    "name": "LAnkle",
+                    "id": 15,
+                    "children": [
+                      {
+                        "name": "LBigToe",
+                        "id": 20,
+                        "children": [
+                          {
+                            "name": "LSmallToe",
+                            "id": 22
+                          }
+                        ]
+                      },
+                      {
+                        "name": "LHeel",
+                        "id": 24
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Neck",
+            "id": 18,
+            "children": [
+              {
+                "name": "Head",
+                "id": 17,
+                "children": [
+                  {
+                    "name": "Nose",
+                    "id": 0
+                  }
+                ]
+              },
+              {
+                "name": "RShoulder",
+                "id": 6,
+                "children": [
+                  {
+                    "name": "RElbow",
+                    "id": 8,
+                    "children": [
+                      {
+                        "name": "RWrist",
+                        "id": 10
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "LShoulder",
+                "id": 5,
+                "children": [
+                  {
+                    "name": "LElbow",
+                    "id": 7,
+                    "children": [
+                      {
+                        "name": "LWrist",
+                        "id": 9
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "px_to_meters_conversion": {
+      "to_meters": false,
+      "make_c3d": false,
+      "save_calib": true,
+      "perspective_value": 10.0,
+      "perspective_unit": "distance_m",
+      "distortions": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "floor_angle": "auto",
+      "xy_origin": [
+        "auto"
+      ],
+      "calib_file": ""
+    },
+    "angles": {
+      "display_angle_values_on": [
+        "body",
+        "list"
+      ],
+      "fontSize": 0.3,
+      "joint_angles": [
+        "Right ankle",
+        "Left ankle",
+        "Right knee",
+        "Left knee",
+        "Right hip",
+        "Left hip",
+        "Right shoulder",
+        "Left shoulder",
+        "Right elbow",
+        "Left elbow",
+        "Right wrist",
+        "Left wrist"
+      ],
+      "segment_angles": [
+        "Right foot",
+        "Left foot",
+        "Right shank",
+        "Left shank",
+        "Right thigh",
+        "Left thigh",
+        "Pelvis",
+        "Trunk",
+        "Shoulders",
+        "Head",
+        "Right arm",
+        "Left arm",
+        "Right forearm",
+        "Left forearm"
+      ],
+      "flip_left_right": true,
+      "correct_segment_angles_with_floor_angle": true
+    },
+    "post-processing": {
+      "interpolate": true,
+      "interp_gap_smaller_than": 5,
+      "fill_large_gaps_with": "nan",
+      "sections_to_keep": "all",
+      "min_chunk_size": 10,
+      "reject_outliers": true,
+      "filter": true,
+      "show_graphs": false,
+      "save_graphs": false,
+      "filter_type": "butterworth",
+      "butterworth": {
+        "order": 4,
+        "cut_off_frequency": 6.0
+      },
+      "kalman": {
+        "trust_ratio": 500.0,
+        "smooth": true
+      },
+      "one_euro": {
+        "oneeuro_cut_off_frequency": 4.0,
+        "oneeuro_beta": 1.5,
+        "oneeuro_d_cut_off_frequency": 1.0
+      },
+      "gcv_spline": {
+        "gcv_cut_off_frequency": "auto",
+        "gcv_smoothing_factor": 1.0
+      },
+      "acc_minimizing": {
+        "accminimizing_cut_off_frequency": 6.0
+      },
+      "gaussian": {
+        "sigma_kernel": 1
+      },
+      "loess": {
+        "nb_values_used": 5
+      },
+      "median": {
+        "kernel_size": 3
+      },
+      "butterworth_on_speed": {
+        "butterspeed_order": 4,
+        "butterspeed_cut_off_frequency": 6.0
+      }
+    },
+    "kinematics": {
+      "do_augmentation": false,
+      "do_ik": false,
+      "filter_ik": false,
+      "ik_filter_type": "acc_minimizing",
+      "feet_on_floor": false,
+      "use_simple_model": false,
+      "participant_mass": [
+        55.0,
+        67.0
+      ],
+      "right_left_symmetry": true,
+      "parallel_workers_kinematics": "auto",
+      "default_height": 1.7,
+      "remove_individual_scaling_setup": true,
+      "remove_individual_ik_setup": true,
+      "large_hip_knee_angles": 135.0,
+      "trimmed_extrema_percent": 50,
+      "osim_setup_path": "../OpenSim_setup"
+    },
+    "logging": {
+      "use_custom_logging": false
+    }
+  },
+  "inference_pipeline_seconds": 29.326700458768755,
+  "processing_seconds": 33.419170250184834,
+  "processing_to_video_ratio": 2.0419044959379735,
+  "warnings": [
+    "2D image-plane measurements; no 3D, diagnostic or clinical accuracy claim.",
+    "Raw capture uses a version-specific Sports2D adapter; pinned versions required.",
+    "Confidence values do not represent calibrated error probabilities."
+  ]
+}

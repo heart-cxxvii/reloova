@@ -4,7 +4,7 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="#top" aria-label="RELOOVA トップへ">
+    <a class="brand" href="/#top" aria-label="RELOOVA トップへ">
       <img
         src="/assets/images/reloova-logo-primary.png"
         alt="RELOOVA"
@@ -13,10 +13,53 @@
       />
     </a>
     <nav class="global-nav" aria-label="メインナビゲーション">
-      <a href="#problem">About</a>
-      <a class="nav-contact" href="#contact">
+      <a href="/#problem">About</a>
+      <a
+        href="/motion-lab/"
+        aria-current={
+          Astro.url.pathname.startsWith("/motion-lab") ? "page" : undefined
+        }
+      >
+        Demo
+      </a>
+      <a class="nav-contact" href="/#contact">
         Contact <span aria-hidden="true">↗</span>
       </a>
     </nav>
   </div>
 </header>
+
+<style>
+  a[aria-current="page"] {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+  @media (max-width: 480px) {
+    .header-inner {
+      gap: 12px;
+    }
+    .global-nav {
+      gap: 14px;
+      font-size: 12px;
+    }
+    .brand {
+      width: 110px;
+    }
+    .global-nav .nav-contact {
+      padding-inline: 12px;
+      gap: 6px;
+    }
+  }
+  @media (max-width: 374px) {
+    .brand {
+      width: 90px;
+    }
+    .global-nav {
+      gap: 10px;
+      font-size: 11px;
+    }
+    .global-nav .nav-contact {
+      padding-inline: 10px;
+    }
+  }
+</style>

@@ -1,0 +1,401 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout
+  title="動作解析デモ｜RELOOVA Motion Lab"
+  description="スクワットの解析済みサンプルから、骨格動画・関節角度・反復回数を確認できるRELOOVAの技術検証デモです。"
+>
+  <Header />
+  <main id="main" class="motion-lab container">
+    <section class="intro">
+      <a class="back-link" href="/">
+        ← RELOOVA ホームへ
+      </a>
+      <p class="eyebrow">RELOOVA / MOTION LAB</p>
+      <h1>動画から、動きを読み解く。</h1>
+      <p>
+        スクワットのサンプル動画から、骨格・関節角度・反復回数を可視化。
+        <br />
+        実際に解析したデータを、動画とグラフで確認できます。
+      </p>
+      <div class="tags">
+        <span>単眼・2D解析</span>
+        <span>スクワット</span>
+        <span>実動画の推定結果</span>
+      </div>
+    </section>
+    <p class="sample-notice">サンプル動画の解析結果を表示するデモです。</p>
+    <noscript>
+      <p>グラフの表示にはJavaScriptを有効にしてください。</p>
+    </noscript>
+    <section id="status" aria-live="polite">
+      解析データを読み込んでいます…
+    </section>
+    <div id="results" hidden>
+      <section class="stats" id="stats"></section>
+      <section class="panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">01 / MOTION</p>
+            <h2>骨格と動作を見る</h2>
+          </div>
+          <span class="badge">サンプル解析</span>
+        </div>
+        <video
+          id="video"
+          controls
+          playsinline
+          preload="metadata"
+          poster="/motion-lab/sample/poster.png"
+          aria-label="骨格付きスクワット解析動画"
+        >
+          <source src="/motion-lab/sample/overlay.mp4" type="video/mp4" />
+        </video>
+        <p class="muted">
+          技術検証用のサンプル動画であり、出演者とRELOOVAに提携・推薦関係はありません。動画:
+          RDNE Stock project / Pexels。
+          <a
+            href="https://www.pexels.com/video/a-woman-doing-squats-8402111/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            元の素材を見る ↗
+          </a>
+        </p>
+        <p class="notice">
+          斜め前から撮影した単眼動画の2D推定です。3D計測・診断・怪我のリスク判定には対応していません。
+        </p>
+      </section>
+      <section class="panel">
+        <p class="eyebrow">02 / KINEMATICS</p>
+        <h2>関節角度を時系列で見る</h2>
+        <div class="controls">
+          <label>
+            表示する指標
+            <select id="metric">
+              <option value="knee_flexion">膝屈曲角</option>
+              <option value="hip_flexion">股関節屈曲角</option>
+              <option value="trunk_inclination">体幹傾斜角</option>
+            </select>
+          </label>
+          <div class="legend">
+            <span>● 左</span>
+            <span>● 右</span>
+          </div>
+        </div>
+        <svg
+          id="chart"
+          viewBox="0 0 900 290"
+          role="img"
+          aria-label="関節角度の時系列グラフ"
+        ></svg>
+        <p id="definition" class="muted"></p>
+        <label class="scrub">
+          動画とグラフを確認 <output id="time">0.00 秒</output>
+          <input
+            type="range"
+            id="seek"
+            min="0"
+            step="0.04"
+            value="0"
+            aria-label="確認する時刻"
+          />
+        </label>
+      </section>
+      <section class="two">
+        <article class="panel">
+          <p class="eyebrow">03 / REPETITIONS</p>
+          <h2>反復動作</h2>
+          <p class="muted">
+            自動検出の結果です。動画と照らし合わせて確認してください。
+          </p>
+          <div id="events"></div>
+        </article>
+        <article class="panel">
+          <p class="eyebrow">04 / DATA QUALITY</p>
+          <h2>データの品質</h2>
+          <div id="quality"></div>
+          <p class="muted">
+            信頼度はモデルの出力値です。座標精度の正解率を表しません。正解となる注釈がないため、絶対精度は未評価です。
+          </p>
+        </article>
+      </section>
+      <section class="panel">
+        <p class="eyebrow">05 / EXPORT</p>
+        <h2>データと解析条件を確かめる</h2>
+        <p>
+          推定結果はCSV・JSONで取得できます。撮影条件、モデル、フィルタ設定を含めて追跡できます。
+        </p>
+        <div id="downloads" class="downloads"></div>
+        <details>
+          <summary>モデル・解析メタデータ</summary>
+          <pre id="metadata"></pre>
+        </details>
+        <details>
+          <summary>解析サマリー</summary>
+          <pre id="summary"></pre>
+        </details>
+        <details>
+          <summary>品質指標の全項目</summary>
+          <pre id="quality-json"></pre>
+        </details>
+      </section>
+    </div>
+    <a class="back-link bottom-link" href="/">
+      ← RELOOVA ホームへ戻る
+    </a>
+  </main>
+  <Footer />
+  <script is:inline src="/motion-lab/demo.js" defer></script>
+</BaseLayout>
+<style>
+  .intro {
+    padding: 64px 0 32px;
+  }
+  .back-link {
+    display: inline-block;
+    font-size: 13px;
+    margin-bottom: 32px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: -0.04em;
+    line-height: 1.4;
+    margin-bottom: 24px;
+  }
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .intro > p:not(.eyebrow) {
+    color: var(--muted);
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .badge,
+  .tags span {
+    padding: 5px 12px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    font-size: 12px;
+  }
+  .sample-notice {
+    background: var(--card);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+  .panel {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 24px;
+    min-width: 0;
+  }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 12px;
+  }
+  video {
+    width: 100%;
+    max-height: 560px;
+    display: block;
+    background: #1f2933;
+    border-radius: 8px;
+  }
+  .muted {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+  .notice {
+    background: var(--card);
+    padding: 14px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+  .two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .controls {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  label {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  select {
+    display: block;
+    background: white;
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin-top: 6px;
+    font: inherit;
+  }
+  .legend {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+  }
+  .legend span:first-child {
+    color: var(--accent);
+  }
+  .legend span:last-child {
+    color: #926e35;
+  }
+  svg {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    overflow: visible;
+  }
+  .scrub {
+    display: block;
+    margin-top: 20px;
+  }
+  output {
+    float: right;
+    font-variant-numeric: tabular-nums;
+  }
+  input[type="range"] {
+    width: 100%;
+    min-height: 36px;
+    accent-color: var(--accent);
+  }
+  details {
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+  }
+  summary {
+    cursor: pointer;
+    font-size: 14px;
+  }
+  pre {
+    overflow: auto;
+    max-height: 400px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: 12px;
+  }
+  .bottom-link {
+    margin: 16px 0 64px;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  #status {
+    padding: 20px;
+    color: var(--muted);
+  }
+  /* The chart and numeric rows are created after the sample data loads. */
+  .motion-lab :global(svg text) {
+    fill: var(--muted);
+    font-size: 12px;
+  }
+  .motion-lab :global(.stats) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .motion-lab :global(.stat) {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .motion-lab :global(.stat small) {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .motion-lab :global(.stat strong) {
+    font-size: 32px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  .motion-lab :global(.stat em) {
+    font-size: 12px;
+    font-style: normal;
+    margin-left: 5px;
+  }
+  .motion-lab :global(.row) {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+  }
+  .motion-lab :global(.row b) {
+    white-space: nowrap;
+  }
+  .motion-lab :global(.downloads) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+  }
+  .motion-lab :global(.downloads a) {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+  .motion-lab :global(.downloads a:hover) {
+    background: var(--card);
+  }
+  @media (max-width: 640px) {
+    .intro {
+      padding-top: 32px;
+    }
+    .panel {
+      padding: 20px;
+    }
+    .two {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .motion-lab :global(.stats) {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .motion-lab :global(.stat) {
+      padding: 16px;
+    }
+    .motion-lab :global(.row) {
+      flex-wrap: wrap;
+    }
+    .badge {
+      white-space: nowrap;
+    }
+    .legend {
+      gap: 10px;
+    }
+    .motion-lab :global(svg text) {
+      font-size: 15px;
+    }
+  }
+</style>
