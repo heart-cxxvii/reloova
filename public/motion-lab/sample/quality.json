@@ -1,0 +1,24 @@
+{
+  "frame_count": 491,
+  "expected_frame_count": 491,
+  "fps": 30.0,
+  "timestamp_step_s": 0.03333333333333333,
+  "major_landmark_low_confidence_fraction": 0.0,
+  "frames_with_any_low_confidence_major_landmark_fraction": 0.0,
+  "processed_coordinate_missing_fraction": 0.0,
+  "per_landmark_low_confidence_fraction": {
+    "LShoulder": 0.0,
+    "RShoulder": 0.0,
+    "LHip": 0.0,
+    "RHip": 0.0,
+    "LKnee": 0.0,
+    "RKnee": 0.0,
+    "LAnkle": 0.0,
+    "RAnkle": 0.0
+  },
+  "raw_frames_without_detection": 0,
+  "angle_jumps_over_20deg_per_frame": 0,
+  "left_right_identity_validation": "Not ground-truth validated; inspect overlay. No automatic swap correction.",
+  "accuracy_against_ground_truth": null,
+  "manual_repetition_count": null
+}

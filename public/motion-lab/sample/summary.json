@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "repetition_count": 2,
+  "duration_s": 16.366666666666667,
+  "frame_count": 491,
+  "processing_seconds": 33.419170250184834,
+  "processing_to_video_ratio": 2.0419044959379735,
+  "side": "left",
+  "knee_flexion_range_deg": {
+    "left": [
+      0.39053189060879845,
+      126.08340067997307
+    ],
+    "right": [
+      0.19093276853465113,
+      117.7275441206632
+    ]
+  }
+}

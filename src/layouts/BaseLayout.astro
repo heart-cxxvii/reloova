@@ -2,9 +2,10 @@
 import "../styles/global.css";
 import GoogleTagManager from "../components/GoogleTagManager.astro";
 
-const title = "RELOOVA｜部費ゼロの部活動を、運動データでつくる";
-const description =
-  "RELOOVAは、部活動・地域スポーツで生まれる運動データを研究開発につなぎ、その価値をスポーツ現場へ還元する仕組みを構想しています。";
+const {
+  title = "RELOOVA｜部費ゼロの部活動を、運動データでつくる",
+  description = "RELOOVAは、部活動・地域スポーツで生まれる運動データを研究開発につなぎ、その価値をスポーツ現場へ還元する仕組みを構想しています。",
+} = Astro.props;
 const ogDescription =
   "スポーツ現場で生まれるデータを研究・製品開発につなぎ、その価値を再びスポーツ現場へ。";
 ---
