@@ -1,3 +1,46 @@
+---
+const fieldFeatures = ["活動記録", "コンディション", "動作分析", "チーム運営"];
+const dataFeatures = ["データ加工", "分析", "研究開発支援"];
+const flows = {
+  field: [
+    {
+      number: "①",
+      label: "無料SaaS・フィードバック",
+      lines: ["無料SaaS・", "フィードバック"],
+      direction: "back",
+      from: "RELOOVA",
+      to: "学校・地域クラブ",
+    },
+    {
+      number: "②",
+      label: "運動データの蓄積",
+      lines: ["運動データの蓄積"],
+      direction: "forward",
+      from: "学校・地域クラブ",
+      to: "RELOOVA",
+    },
+  ],
+  research: [
+    {
+      number: "③",
+      label: "研究・開発向けデータ提供",
+      lines: ["研究・開発向け", "データ提供"],
+      direction: "forward",
+      from: "RELOOVA",
+      to: "企業・研究機関",
+    },
+    {
+      number: "④",
+      label: "データ利用料・共同研究費",
+      lines: ["データ利用料・", "共同研究費"],
+      direction: "back",
+      from: "企業・研究機関",
+      to: "RELOOVA",
+    },
+  ],
+};
+---
+
 <section id="model" class="section model-section" aria-labelledby="model-title">
   <div class="container">
     <div class="section-intro">
@@ -8,92 +51,730 @@
         スポーツ現場にめぐる仕組みへ。
       </h2>
     </div>
-    <div
-      class="model-flow"
-      role="group"
-      aria-label="学校・地域クラブからRELOOVAへ運動データを蓄積し、適切な同意を前提に研究機関・企業で活用。収益の一部をスポーツ現場へ還元する事業モデル"
+
+    <figure
+      class="business-model"
+      aria-label="RELOOVAの2つの事業と、データ・収益・現場還元の流れ"
     >
-      <article class="flow-card">
-        <img
-          class="flow-photo"
-          src="/assets/images/school-club.webp"
-          alt="屋外でスポーツに取り組む選手たち"
-          width="1440"
-          height="960"
-          loading="lazy"
-        />
-        <div class="flow-copy">
-          <p class="eyebrow">SPORTS FIELD</p>
-          <h3>学校・地域クラブ</h3>
-          <p>
-            サービスを無料で利用し、
+      <figcaption class="model-caption">
+        <span class="concept-badge">事業構想</span>
+        <p>現場の記録を研究・開発につなぎ、生まれた価値を現場へ。</p>
+      </figcaption>
+
+      <div class="model-diagram">
+        <article class="actor field-actor">
+          <span class="actor-eyebrow">SPORTS FIELD</span>
+          <svg
+            class="actor-icon"
+            viewBox="0 0 48 48"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M24 5v9m0-9h11v7H24M11 25 24 14l13 11v18H11V25ZM11 29H4v14h40V29h-7M21 43V33h6v10M19 25h10M8 34v3m32-3v3" />
+          </svg>
+          <h3>
+            学校・地域
+            <br class="desktop-break" />
+            スポーツクラブ
+          </h3>
+          <p class="actor-summary">無料SaaSを利用する現場</p>
+          <p class="actor-detail">
+            活動・コンディション・
             <br />
-            日々の活動で記録を蓄積。
+            動作データを記録し、
+            <br />
+            データに基づく
+            <br class="desktop-break" />
+            フィードバックを受ける
+          </p>
+        </article>
+
+        <div class="flow-lane field-lane">
+          {flows.field.map((flow) => (
+            <div
+              class={`exchange-flow flow-${flow.direction}`}
+              role="group"
+              aria-label={`${flow.number} ${flow.from}から${flow.to}へ：${flow.label}`}
+            >
+              <p>
+                <span class="flow-number">{flow.number}</span>
+                <span class="flow-label">
+                  {flow.lines.map((line) => (
+                    <span>{line}</span>
+                  ))}
+                </span>
+              </p>
+              <span class="flow-line" aria-hidden="true"></span>
+            </div>
+          ))}
+        </div>
+
+        <article class="model-core" aria-labelledby="reloova-model-title">
+          <h3 id="reloova-model-title">
+            <img
+              src="/assets/images/reloova-logo-primary.png"
+              alt="RELOOVA"
+              width="2172"
+              height="724"
+            />
+          </h3>
+          <p class="core-description">現場と研究・開発をつなぐ、2つの事業</p>
+          <div class="business-pillars">
+            <section
+              class="business-pillar saas-pillar"
+              aria-labelledby="saas-title"
+            >
+              <div class="pillar-heading">
+                <span>FOR SPORTS FIELD</span>
+                <h4 id="saas-title">現場向けSaaS</h4>
+              </div>
+              <ul>
+                {fieldFeatures.map((feature) => (
+                  <li>
+                    <span aria-hidden="true">✓</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </section>
+            <section
+              class="business-pillar data-pillar"
+              aria-labelledby="data-title"
+            >
+              <div class="pillar-heading">
+                <span>FOR RESEARCH &amp; BUSINESS</span>
+                <h4 id="data-title">
+                  研究・企業向け
+                  <br />
+                  データ事業
+                </h4>
+              </div>
+              <ul>
+                {dataFeatures.map((feature) => (
+                  <li>
+                    <span aria-hidden="true">✓</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </div>
+          <p class="pillar-connection">
+            <span aria-hidden="true"></span>2つの事業がデータで連携
+            <span aria-hidden="true"></span>
+          </p>
+        </article>
+
+        <div class="flow-lane research-lane">
+          {flows.research.map((flow) => (
+            <div
+              class={`exchange-flow flow-${flow.direction}`}
+              role="group"
+              aria-label={`${flow.number} ${flow.from}から${flow.to}へ：${flow.label}`}
+            >
+              <p>
+                <span class="flow-number">{flow.number}</span>
+                <span class="flow-label">
+                  {flow.lines.map((line) => (
+                    <span>{line}</span>
+                  ))}
+                </span>
+              </p>
+              <span class="flow-line" aria-hidden="true"></span>
+            </div>
+          ))}
+        </div>
+
+        <article class="actor research-actor">
+          <span class="actor-eyebrow">RESEARCH &amp; BUSINESS</span>
+          <svg
+            class="actor-icon"
+            viewBox="0 0 48 48"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m4 17 20-11 20 11H4ZM6 42h36M8 37h32M11 22v15m9-15v15m8-15v15m9-15v15" />
+            <circle cx="24" cy="13" r="1.5" />
+          </svg>
+          <h3>企業・研究機関</h3>
+          <ul class="actor-customers">
+            <li>スポーツ関連企業</li>
+            <li>ヘルスケア企業</li>
+            <li>大学・研究機関</li>
+          </ul>
+          <p class="actor-detail">
+            研究・製品開発・
+            <br />
+            サービス開発に活用
+          </p>
+        </article>
+
+        <div
+          class="return-flow"
+          role="group"
+          aria-label="⑤ RELOOVAから学校・地域クラブへ：収益の一部を現場へ還元"
+        >
+          <div class="return-line" aria-hidden="true"></div>
+          <p class="return-label">
+            <span class="flow-number">⑤</span>
+            <span>収益の一部を現場へ還元</span>
+          </p>
+          <div class="return-mobile-route" aria-hidden="true">
+            <span>学校・地域クラブ</span>
+            <svg viewBox="0 0 80 20">
+              <path d="M78 10H4m8-7-8 7 8 7" />
+            </svg>
+            <span>RELOOVA</span>
+          </div>
+          <p class="return-detail">
+            備品・ユニフォーム・遠征費・大会参加費などの負担軽減へ
           </p>
         </div>
-      </article>
-      <div class="flow-arrow" aria-hidden="true">
-        <span>運動データ</span>
-        <i>→</i>
       </div>
-      <article class="flow-card">
-        <div class="flow-brand">
-          <img
-            class="flow-logo"
-            src="/assets/images/reloova-logo-primary.png"
-            alt="RELOOVA"
-            width="2172"
-            height="724"
-            loading="lazy"
-          />
-        </div>
-        <div class="flow-copy">
-          <p class="eyebrow">DATA PLATFORM</p>
-          <h3>記録を蓄積・加工</h3>
-          <p>
-            適切な同意を前提に、
-            <br />
-            研究・開発用途へ活かせる形に。
-          </p>
-        </div>
-      </article>
-      <div class="flow-arrow" aria-hidden="true">
-        <span>研究開発へ</span>
-        <i>→</i>
+
+      <div class="model-consent">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="m12 3 8 3v6c0 4-4 7-8 9-4-2-8-5-8-9V6l8-3Z" />
+          <path d="m8 12 3 3 5-6" />
+        </svg>
+        <p>本人・保護者の同意を前提に、適切に加工したデータを活用</p>
       </div>
-      <article class="flow-card">
-        <img
-          class="flow-photo"
-          src="/assets/images/research-lab.jpg"
-          alt="研究室でデータを確認する研究者"
-          width="2200"
-          height="1466"
-          loading="lazy"
-        />
-        <div class="flow-copy">
-          <p class="eyebrow">RESEARCH &amp; BUSINESS</p>
-          <h3>研究機関・企業</h3>
-          <p>
-            大学、研究機関、
-            <br />
-            スポーツ・ヘルスケア企業等。
-          </p>
-        </div>
-      </article>
-    </div>
-    <div class="model-return">
-      <span class="return-arrow" aria-hidden="true">
-        ↶
-      </span>
-      <div>
-        <p class="eyebrow">RETURN TO THE FIELD</p>
-        <p>
-          B2B収益の一部を、備品・ユニフォーム・遠征費・大会参加費など、スポーツ現場の負担軽減へ。
-        </p>
-      </div>
-    </div>
-    <p class="consent-note">
-      データの利用は、本人・保護者等の適切な同意を前提とします。
-    </p>
+      <p class="model-stage-note">
+        本図は事業構想です。掲載機能・データ事業・収益還元の仕組みは検証・開発準備段階にあり、提供・実現済みを示すものではありません。
+      </p>
+    </figure>
   </div>
 </section>
+
+<style>
+  .business-model {
+    --model-blue: #1d6ce0;
+    --model-navy: #17324f;
+    --model-cyan: #0891b2;
+    margin: 3rem 0 0;
+    color: var(--model-navy);
+  }
+  .model-caption {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .concept-badge {
+    flex-shrink: 0;
+    padding: 5px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    background: white;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .model-caption p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .model-diagram {
+    display: grid;
+    grid-template-columns:
+      minmax(155px, 1fr) minmax(126px, 0.8fr) minmax(360px, 2.2fr)
+      minmax(126px, 0.8fr) minmax(155px, 1fr);
+    align-items: center;
+  }
+  .actor {
+    position: relative;
+    z-index: 1;
+    align-self: end;
+    padding: 25px 16px;
+    border: 1px solid;
+    border-radius: 20px;
+    text-align: center;
+  }
+  .field-actor {
+    grid-area: 1 / 1;
+    border-color: #a5e2eb;
+    background: #e5f8fb;
+  }
+  .research-actor {
+    grid-area: 1 / 5;
+    border-color: #c4d6ff;
+    background: #edf3ff;
+  }
+  .actor-eyebrow {
+    display: block;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .field-actor .actor-eyebrow,
+  .field-actor .actor-icon {
+    color: var(--model-cyan);
+  }
+  .research-actor .actor-eyebrow,
+  .research-actor .actor-icon {
+    color: var(--model-blue);
+  }
+  .actor-icon {
+    display: block;
+    width: 49px;
+    height: 49px;
+    margin: 18px auto;
+  }
+  .actor h3 {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.65;
+    letter-spacing: -0.04em;
+  }
+  .actor-summary {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #b7e0e8;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .actor-detail {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.9;
+  }
+  .actor-customers {
+    margin-top: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #c4d6ff;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .model-core {
+    position: relative;
+    z-index: 1;
+    grid-area: 1 / 3;
+    padding: 30px 18px 20px;
+    border: 1px solid #d8e3ee;
+    border-radius: 24px;
+    background: #eaf0f6;
+  }
+  .model-core h3 {
+    width: 190px;
+    margin: 0 auto;
+  }
+  .model-core h3 img {
+    display: block;
+    width: 100%;
+    height: auto;
+    mix-blend-mode: multiply;
+  }
+  .core-description {
+    margin: 5px 0 24px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+  }
+  .business-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .business-pillar {
+    overflow: hidden;
+    border: 1px solid #cfdee8;
+    border-radius: 12px;
+    background: #fff;
+  }
+  .pillar-heading {
+    display: flex;
+    min-height: 96px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 14px 8px;
+  }
+  .saas-pillar .pillar-heading {
+    background: #c7eff5;
+  }
+  .data-pillar .pillar-heading {
+    background: var(--model-blue);
+    color: white;
+  }
+  .pillar-heading > span {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    text-align: center;
+  }
+  .pillar-heading h4 {
+    margin-top: 6px;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    letter-spacing: -0.04em;
+  }
+  .business-pillar ul {
+    padding: 4px 12px;
+  }
+  .business-pillar li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 43px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .business-pillar li + li {
+    border-top: 1px solid #edf2f7;
+  }
+  .business-pillar li > span {
+    color: var(--model-cyan);
+    font-size: 12px;
+  }
+  .data-pillar li > span {
+    color: var(--model-blue);
+  }
+  .pillar-connection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 17px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .pillar-connection > span {
+    width: 22px;
+    height: 1px;
+    background: #b5c8d9;
+  }
+  .flow-lane {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    padding: 0 9px;
+  }
+  .field-lane {
+    grid-area: 1 / 2;
+  }
+  .research-lane {
+    grid-area: 1 / 4;
+  }
+  .exchange-flow {
+    color: var(--model-blue);
+  }
+  .exchange-flow p {
+    display: flex;
+    min-height: 69px;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.7;
+    text-align: center;
+  }
+  .flow-label > span {
+    display: block;
+  }
+  .flow-number {
+    flex-shrink: 0;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .flow-line {
+    position: relative;
+    display: block;
+    width: calc(100% - 8px);
+    height: 2px;
+    margin: 18px 4px 8px;
+    background: currentColor;
+  }
+  .flow-line::after {
+    position: absolute;
+    top: -4px;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid;
+    border-right: 2px solid;
+    transform: rotate(45deg);
+    content: "";
+  }
+  .flow-back .flow-line {
+    transform: rotate(180deg);
+  }
+  .return-flow {
+    position: relative;
+    grid-area: 2 / 1 / 3 / 4;
+    align-self: start;
+    min-height: 144px;
+    margin: 0 27.5% 0 12.5%;
+    padding-top: 48px;
+    text-align: center;
+  }
+  /* This independent U-shaped path starts below RELOOVA and ends at the field. */
+  .return-line {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 72px;
+    border: 3px solid var(--model-navy);
+    border-top: 0;
+    border-radius: 0 0 25px 25px;
+  }
+  .return-line::before {
+    position: absolute;
+    top: 0;
+    left: -7px;
+    width: 11px;
+    height: 11px;
+    border-top: 3px solid var(--model-navy);
+    border-left: 3px solid var(--model-navy);
+    transform: rotate(45deg);
+    content: "";
+  }
+  .return-label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    background: #f8fafc;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .return-detail {
+    position: relative;
+    margin: 12px -20px 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .return-mobile-route {
+    display: none;
+  }
+  .model-consent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 19px 24px;
+    border: 1px solid #d7e4f6;
+    border-radius: 12px;
+    background: #edf3ff;
+  }
+  .model-consent svg {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--model-blue);
+  }
+  .model-consent p {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.8;
+  }
+  .model-stage-note {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.9;
+  }
+
+  @media (max-width: 1099px) {
+    .model-caption {
+      align-items: flex-start;
+    }
+    .model-diagram {
+      grid-template-columns: minmax(0, 1fr);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .actor {
+      padding: 22px;
+    }
+    .field-actor {
+      grid-area: 1 / 1;
+    }
+    .field-lane {
+      grid-area: 2 / 1;
+    }
+    .model-core {
+      grid-area: 3 / 1;
+    }
+    .research-lane {
+      grid-area: 4 / 1;
+    }
+    .research-actor {
+      grid-area: 5 / 1;
+    }
+    .return-flow {
+      grid-area: 6 / 1;
+    }
+    .actor-icon {
+      width: 40px;
+      height: 40px;
+      margin: 12px auto;
+    }
+    .actor h3 {
+      font-size: 21px;
+    }
+    .desktop-break {
+      display: none;
+    }
+    .actor-summary {
+      margin-top: 12px;
+      padding-top: 12px;
+    }
+    .actor-detail {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+    .actor-detail br {
+      display: none;
+    }
+    .actor-customers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0 14px;
+      font-size: 14px;
+    }
+    .flow-lane {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 20px 0;
+    }
+    .exchange-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .exchange-flow p {
+      min-height: 0;
+      max-width: 165px;
+      font-size: 14px;
+    }
+    .flow-line {
+      flex-shrink: 0;
+      width: 2px;
+      height: 88px;
+      margin: 4px 5px;
+    }
+    /* Field sits above core above research: forward is down, back is up. */
+    .flow-line::after {
+      top: auto;
+      right: -4px;
+      bottom: 0;
+      transform: rotate(135deg);
+    }
+    .model-core {
+      padding: 24px 18px 18px;
+    }
+    .pillar-heading h4 {
+      font-size: 18px;
+    }
+    .business-pillar li {
+      min-height: 45px;
+      font-size: 14px;
+    }
+    .return-flow {
+      min-height: 0;
+      margin: 24px 0;
+      padding: 20px 16px;
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      background: white;
+    }
+    .return-line {
+      display: none;
+    }
+    .return-label {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      font-size: 16px;
+    }
+    .return-mobile-route {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 18px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .return-mobile-route svg {
+      flex: 1;
+      max-width: 80px;
+      min-width: 24px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+    .return-detail {
+      margin: 14px 0 0;
+      font-size: 12px;
+    }
+    .model-consent {
+      align-items: flex-start;
+      padding: 18px;
+    }
+  }
+  @media (max-width: 379px) {
+    .business-pillars {
+      gap: 8px;
+    }
+    .model-core {
+      padding-right: 12px;
+      padding-left: 12px;
+    }
+    .pillar-heading h4 {
+      font-size: 15px;
+    }
+    .pillar-heading > span {
+      font-size: 7px;
+      letter-spacing: 0;
+    }
+    .business-pillar ul {
+      padding-right: 8px;
+      padding-left: 8px;
+    }
+    .business-pillar li {
+      gap: 5px;
+      font-size: 13px;
+    }
+    .exchange-flow {
+      gap: 6px;
+    }
+    .exchange-flow p {
+      font-size: 13px;
+    }
+    .return-label {
+      gap: 6px;
+      font-size: 14px;
+    }
+  }
+</style>
