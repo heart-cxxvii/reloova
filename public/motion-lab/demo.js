@@ -142,6 +142,74 @@ $("video").addEventListener("timeupdate", () => {
     c.setAttribute("x2", x);
   }
 });
+// Validate shared sample metadata before exposing results or changing seek bounds.
+function validateSample(rows, summary, quality, metadata, reps) {
+  const fail = () => {
+    throw Error("解析データのメタデータが一致しません");
+  };
+  const finite = (value) => typeof value === "number" && Number.isFinite(value);
+  for (const item of [summary, quality, metadata]) {
+    if (
+      item.frame_count !== undefined &&
+      (!Number.isInteger(item.frame_count) || item.frame_count !== rows.length)
+    )
+      fail();
+  }
+  if (!Array.isArray(reps)) fail();
+  if (
+    summary.repetition_count !== undefined &&
+    (!Number.isInteger(summary.repetition_count) ||
+      summary.repetition_count !== reps.length)
+  )
+    fail();
+  const rates = [metadata.fps, quality.fps].filter(
+    (value) => value !== undefined,
+  );
+  if (rates.some((value) => !finite(value) || value <= 0)) fail();
+  // Permit rounded fps (e.g. 29.97 vs 30), but not a different sampling rate.
+  if (
+    rates.length === 2 &&
+    Math.abs(rates[0] - rates[1]) > Math.max(...rates) * 0.002
+  )
+    fail();
+  const step = rates.length ? 1 / rates[0] : rows[1]?.time_s - rows[0].time_s;
+  if (!finite(step) || step <= 0) fail();
+  if (
+    quality.timestamp_step_s !== undefined &&
+    (!finite(quality.timestamp_step_s) ||
+      Math.abs(quality.timestamp_step_s - step) > 0.0001)
+  )
+    fail();
+  if (
+    rows.some(
+      (row, index) =>
+        !finite(row.time_s) ||
+        row.time_s < 0 ||
+        (index > 0 && row.time_s <= rows[index - 1].time_s),
+    )
+  )
+    fail();
+  const end = rows.at(-1).time_s;
+  const durations = [summary.duration_s, metadata.duration_s].filter(
+    (value) => value !== undefined,
+  );
+  // Durations may be rounded to tenths; a video's endpoint is one frame after
+  // the final sampled timestamp. Those are distinct, valid time conventions.
+  if (
+    durations.some(
+      (value) =>
+        !finite(value) ||
+        value <= 0 ||
+        value < end - 0.05 ||
+        value > end + step + 0.05,
+    )
+  )
+    fail();
+  if (durations.length === 2 && Math.abs(durations[0] - durations[1]) > 0.05)
+    fail();
+  if (Math.abs(end - (rows.length - 1) * step) > 0.05) fail();
+}
+
 async function load() {
   try {
     const names = ["angles", "summary", "quality", "metadata", "events"];
@@ -158,11 +226,12 @@ async function load() {
       : angles.data || angles.frames || angles.records;
     if (!Array.isArray(rows) || !rows.length)
       throw Error("時系列データがありません");
-    duration = rows.at(-1).time_s;
-    $("seek").max = duration;
     const reps = Array.isArray(events)
       ? events
       : events.repetitions || events.events || [];
+    validateSample(rows, summary, quality, metadata, reps);
+    duration = rows.at(-1).time_s;
+    $("seek").max = duration;
     const count =
       summary.repetition_count ??
       summary.squat_count ??

@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "lint": "prettier --check src astro.config.mjs package.json tsconfig.json .prettierrc.json"
+    "lint": "prettier --check src astro.config.mjs package.json tsconfig.json .prettierrc.json",
+    "test:motion-lab": "node scripts/check-motion-lab.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.4",
